@@ -6,3 +6,15 @@
 
 
 //learn destructuring
+
+//props
+//props to delete items in array
+//props to edit items in array
+
+//react router dom
+//wildcard routing
+//dynamic routing
+//nested/children routes
+//programmatic redirection
+//use navigate 
+//link tags

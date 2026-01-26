@@ -158,44 +158,76 @@
 
 // export default App;
 
-import React, { useState } from "react";
-import AddUser from "./components/AddUser";
-import DisplayUser from "./components/DisplayUser";
+// import React, { useState } from "react";
+// import AddUser from "./components/AddUser";
+// import DisplayUser from "./components/DisplayUser";
+
+// const App = () => {
+//   const [allUsers, setallUsers] = useState([]);
+
+//   const deleteUser = (index) => {
+//     console.log(index);
+//     let newAllUsers = [...allUsers];
+//     newAllUsers.splice(index, 1);
+
+//     setallUsers(newAllUsers);
+//   };
+//   const submitUser = (userData) => {
+//     // console.log(user);
+//     // setallUsers(user)
+//     setallUsers([...allUsers, userData]);
+//     // let fruits = ["mango", 'apple', "orange"]
+//     // let newFruits = [...fruits, 'cashew']
+//   };
+//   const editUser=(index, userData)=>{
+//     let newAllUsers=[...allUsers];
+    
+//     console.log(index)
+//     // console.log(user);
+    
+//     newAllUsers.splice(index, 1, userData)
+//     setallUsers(newAllUsers)
+//   }
+
+
+//   return (
+//     <div>
+//       <AddUser allUsers={allUsers} submitUser={submitUser} />
+//       <DisplayUser allUsers={allUsers} deleteUser={deleteUser} editUser={editUser}/>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+
+import React from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import About from './pages/About'
+import Navbar from './components/Navbar'
+import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
+import Profile from './pages/Profile'
 
 const App = () => {
-  const [allUsers, setallUsers] = useState([]);
-
-  const deleteUser = (index) => {
-    console.log(index);
-    let newAllUsers = [...allUsers];
-    newAllUsers.splice(index, 1);
-
-    setallUsers(newAllUsers);
-  };
-  const submitUser = (userData) => {
-    // console.log(user);
-    // setallUsers(user)
-    setallUsers([...allUsers, userData]);
-    // let fruits = ["mango", 'apple', "orange"]
-    // let newFruits = [...fruits, 'cashew']
-  };
-  const editUser=(index, userData)=>{
-    let newAllUsers=[...allUsers];
-    
-    console.log(index)
-    // console.log(user);
-    
-    newAllUsers.splice(index, 1, userData)
-    setallUsers(newAllUsers)
-  }
-
-
   return (
-    <div>
-      <AddUser allUsers={allUsers} submitUser={submitUser} />
-      <DisplayUser allUsers={allUsers} deleteUser={deleteUser} editUser={editUser}/>
-    </div>
-  );
-};
+    <>
+    <Navbar/>
+      <Routes>
+          <Route path='/about' element={<About/>}/>
 
-export default App;
+          <Route path='/contact' element={<Contact/>}/>
+
+          <Route path='/news' element={<Navigate to={"/about"}/>}/>
+
+          <Route path='/profile/:username' element={<Profile/>}/>
+
+
+
+          <Route path='*' element={<NotFound/>}/>
+      </Routes>
+    </>
+  )
+}
+
+export default App
