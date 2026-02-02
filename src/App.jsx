@@ -208,22 +208,27 @@ import Navbar from './components/Navbar'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import Profile from './pages/Profile'
+import Layout from './pages/Layout'
+import Settings from './pages/Settings'
 
 const App = () => {
   return (
     <>
-    <Navbar/>
+    {/* <Navbar/> */}
       <Routes>
           <Route path='/about' element={<About/>}/>
 
-          <Route path='/contact' element={<Contact/>}/>
-
+          
           <Route path='/news' element={<Navigate to={"/about"}/>}/>
 
           <Route path='/profile/:username' element={<Profile/>}/>
 
 
+          <Route path="/admin" element={<Layout/>}>
+          <Route path='contact' element={<Contact/>}/>
+          <Route path='settings/:username' element={<Settings/>}/>
 
+          </Route>
           <Route path='*' element={<NotFound/>}/>
       </Routes>
     </>

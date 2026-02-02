@@ -18,3 +18,12 @@
 //programmatic redirection
 //use navigate 
 //link tags
+
+//useEffect
+//axios
+
+//connecting APIs
+//react redux toolkit
+
+
+//useref
