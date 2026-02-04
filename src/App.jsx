@@ -210,6 +210,7 @@ import NotFound from './pages/NotFound'
 import Profile from './pages/Profile'
 import Layout from './pages/Layout'
 import Settings from './pages/Settings'
+import Formikk from './pages/Formikk'
 
 const App = () => {
   return (
@@ -220,6 +221,7 @@ const App = () => {
 
           
           <Route path='/news' element={<Navigate to={"/about"}/>}/>
+          <Route path='/formik' element={<Formikk/>}/>
 
           <Route path='/profile/:username' element={<Profile/>}/>
 
