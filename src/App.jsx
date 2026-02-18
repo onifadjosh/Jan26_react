@@ -212,6 +212,7 @@ import Layout from './pages/Layout'
 import Settings from './pages/Settings'
 import Formikk from './pages/Formikk'
 import ListProduct from './pages/ListProduct'
+import Login from './pages/Login'
 
 const App = () => {
   return (
@@ -224,6 +225,7 @@ const App = () => {
           <Route path='/news' element={<Navigate to={"/about"}/>}/>
           <Route path='/formik' element={<Formikk/>}/>
           <Route path='/list-prod' element={<ListProduct/>}/>
+          <Route path='/login' element={<Login/>}/>
 
           <Route path='/profile/:username' element={<Profile/>}/>
 

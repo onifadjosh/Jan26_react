@@ -45,7 +45,8 @@ const [productImage, setproductImage] = useState("")
 
             })
 
-            print(payload)
+            console.log(payload)
+            
             console.log(response);
             
 
