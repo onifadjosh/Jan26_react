@@ -181,14 +181,13 @@
 //   };
 //   const editUser=(index, userData)=>{
 //     let newAllUsers=[...allUsers];
-    
+
 //     console.log(index)
 //     // console.log(user);
-    
+
 //     newAllUsers.splice(index, 1, userData)
 //     setallUsers(newAllUsers)
 //   }
-
 
 //   return (
 //     <div>
@@ -200,45 +199,46 @@
 
 // export default App;
 
-
-import React from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
-import About from './pages/About'
-import Navbar from './components/Navbar'
-import Contact from './pages/Contact'
-import NotFound from './pages/NotFound'
-import Profile from './pages/Profile'
-import Layout from './pages/Layout'
-import Settings from './pages/Settings'
-import Formikk from './pages/Formikk'
-import ListProduct from './pages/ListProduct'
-import Login from './pages/Login'
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import About from "./pages/About";
+import Navbar from "./components/Navbar";
+import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
+import Profile from "./pages/Profile";
+import Layout from "./pages/Layout";
+import Settings from "./pages/Settings";
+import Formikk from "./pages/Formikk";
+import ListProduct from "./pages/ListProduct";
+import Login from "./pages/Login";
+import AuthGuard from "./auth/AuthGuard";
 
 const App = () => {
+  const isAuth = localStorage.getItem("token");
   return (
     <>
-    {/* <Navbar/> */}
+      {/* <Navbar/> */}
       <Routes>
-          <Route path='/about' element={<About/>}/>
+        <Route path="/login" element={<Login />} />
 
-          
-          <Route path='/news' element={<Navigate to={"/about"}/>}/>
-          <Route path='/formik' element={<Formikk/>}/>
-          <Route path='/list-prod' element={<ListProduct/>}/>
-          <Route path='/login' element={<Login/>}/>
+        <Route element={<AuthGuard isAuth={isAuth}/>}>
+          <Route path="/about" element={<About />} />
 
-          <Route path='/profile/:username' element={<Profile/>}/>
+          <Route path="/news" element={<Navigate to={"/about"} />} />
+          <Route path="/formik" element={<Formikk />} />
+          <Route path="/list-prod" element={<ListProduct />} />
 
+          <Route path="/profile/:username" element={<Profile />} />
 
-          <Route path="/admin" element={<Layout/>}>
-          <Route path='contact' element={<Contact/>}/>
-          <Route path='settings/:username' element={<Settings/>}/>
-
+          <Route path="/admin" element={<Layout />}>
+            <Route path="contact" element={<Contact />} />
+            <Route path="settings/:username" element={<Settings />} />
           </Route>
-          <Route path='*' element={<NotFound/>}/>
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
